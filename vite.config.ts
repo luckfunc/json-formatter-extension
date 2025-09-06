@@ -8,9 +8,6 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, 'src/popup/index.html'),
-        options: resolve(__dirname, 'src/options/index.html'),
-        background: resolve(__dirname, 'src/background/index.ts'),
         content: resolve(__dirname, 'src/content/index.ts'),
       },
       output: {
@@ -26,5 +23,21 @@ export default defineConfig({
     },
     outDir: 'dist',
     emptyOutDir: true
-  }
+  },
+  plugins: [
+    {
+      name: 'copy-themes',
+      writeBundle() {
+        const fs = require('fs');
+        const path = require('path');
+
+        const themesSource = resolve(__dirname, 'src/themes');
+        const themesTarget = resolve(__dirname, 'dist/themes');
+
+        if (fs.existsSync(themesSource)) {
+          fs.mkdirSync(path.dirname(themesTarget), { recursive: true });
+          fs.cpSync(themesSource, themesTarget, { recursive: true });
+        }
+      }
+    }]
 });

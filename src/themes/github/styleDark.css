@@ -1,0 +1,154 @@
+/* GitHub Dark Theme for JSON Formatter */
+
+#optionBar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(1, 4, 9, 0.8);
+}
+
+#optionBar button {
+  margin: 0 2px;
+  padding: 6px 12px;
+  border: 1px solid #30363d;
+  background: #21262d;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #f0f6fc;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+#optionBar button:hover {
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+#optionBar button.selected {
+  background: #238636;
+  color: #ffffff;
+  border-color: #238636;
+}
+
+#jsonFormatterParsed {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 16px;
+  white-space: pre-wrap;
+  position: relative;
+  background: #0d1117;
+  color: #f0f6fc;
+}
+
+#jsonFormatterRaw {
+  background: #0d1117;
+  color: #f0f6fc;
+}
+
+#jsonFormatterRaw pre {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 16px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.json-line {
+  display: block;
+  position: relative;
+}
+
+.json-property {
+  margin-left: 1.2em;
+  position: relative;
+  border-left: 1px solid #30363d;
+  padding-left: 12px;
+}
+
+.json-item {
+  margin-left: 1.2em;
+  position: relative;
+  border-left: 1px solid #30363d;
+  padding-left: 12px;
+}
+
+/* GitHub风格的连续垂直分割线 */
+.json-object,
+.json-array {
+  position: relative;
+}
+
+/* 根级别不需要边框 */
+#jsonFormatterParsed > .json-object,
+#jsonFormatterParsed > .json-array {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* 展开按钮 */
+.json-expander {
+  cursor: pointer;
+  user-select: none;
+  color: #8b949e;
+  margin-right: 6px;
+  display: inline-block;
+  width: 12px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.15s ease;
+  font-size: 10px;
+}
+
+.json-expander:hover {
+  color: #f0f6fc;
+}
+
+.json-key {
+  color: #79c0ff;
+  font-weight: 600;
+}
+
+.json-string {
+  color: #a5d6ff;
+}
+
+.json-number {
+  color: #79c0ff;
+}
+
+.json-boolean {
+  color: #d2a8ff;
+}
+
+.json-null {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.json-syntax {
+  color: #f0f6fc;
+  font-weight: 600;
+}
+
+.json-comma {
+  color: #f0f6fc;
+}
+
+.json-comment {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.json-primitive {
+  display: inline;
+}

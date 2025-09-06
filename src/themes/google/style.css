@@ -1,0 +1,158 @@
+/* Claude Light Theme for JSON Formatter */
+
+#optionBar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+#optionBar button {
+  margin: 2px;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+#optionBar button:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+#optionBar button.selected {
+  background: #d97706;
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+#jsonFormatterParsed {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  white-space: pre-wrap;
+  position: relative;
+  background: #ffffff;
+  color: #111827;
+}
+
+#jsonFormatterRaw {
+  background: #ffffff;
+  color: #111827;
+}
+
+#jsonFormatterRaw pre {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.json-line {
+  display: block;
+  position: relative;
+}
+
+.json-property {
+  margin-left: 1.5em;
+  position: relative;
+  border-left: 1px solid #f3f4f6;
+  padding-left: 14px;
+}
+
+.json-item {
+  margin-left: 1.5em;
+  position: relative;
+  border-left: 1px solid #f3f4f6;
+  padding-left: 14px;
+}
+
+/* Claude风格的连续垂直分割线 */
+.json-object,
+.json-array {
+  position: relative;
+}
+
+/* 根级别不需要边框 */
+#jsonFormatterParsed > .json-object,
+#jsonFormatterParsed > .json-array {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* 展开按钮 */
+.json-expander {
+  cursor: pointer;
+  user-select: none;
+  color: #9ca3af;
+  margin-right: 8px;
+  display: inline-block;
+  width: 12px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.15s ease;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.json-expander:hover {
+  color: #d97706;
+  transform: scale(1.1);
+}
+
+.json-key {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.json-string {
+  color: #059669;
+}
+
+.json-number {
+  color: #dc2626;
+}
+
+.json-boolean {
+  color: #7c3aed;
+}
+
+.json-null {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.json-syntax {
+  color: #374151;
+  font-weight: 600;
+}
+
+.json-comma {
+  color: #9ca3af;
+}
+
+.json-comment {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.json-primitive {
+  display: inline;
+}

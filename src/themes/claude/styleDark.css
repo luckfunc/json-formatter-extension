@@ -1,0 +1,44 @@
+body {
+  background-color: #1c1c1c;
+  color: #e5e5e5;
+}
+
+.k {
+  color: #e39ef3;
+}
+
+.s {
+  color: #b3e5b3;
+}
+
+.n {
+  color: #efc5a9;
+}
+
+.bl,
+.nl {
+  color: #99d6f3;
+}
+
+.blockInner {
+  border-left-color: #4a4a4a;
+}
+
+.e {
+  color: #b2b2b2;
+}
+
+:is(#buttonPlain, #buttonFormatted) {
+  background-color: #2a2a2a;
+  border: 1px solid #4a4a4a;
+  color: #e5e5e5;
+}
+
+:is(#buttonPlain, #buttonFormatted):not(.selected):hover {
+  background-color: #3a3a3a;
+}
+
+:is(#buttonPlain, #buttonFormatted).selected {
+  background-color: #4a4a4a;
+  border-color: #e5e5e5;
+}

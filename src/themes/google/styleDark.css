@@ -1,0 +1,45 @@
+body {
+  background-color: #202124;
+  color: #e8eaed;
+}
+
+.k {
+  color: #5bb974;
+}
+
+.s {
+  color: #ec8378;
+}
+
+.n {
+  color: #82b1ff;
+}
+
+.bl,
+.nl {
+  color: #c58af9;
+}
+
+.blockInner {
+  border-left-color: #5f6368;
+}
+
+.e {
+  color: #969ba1;
+}
+
+:is(#buttonPlain, #buttonFormatted) {
+  background-color: #202124;
+  border: 1px solid #5f6368;
+  color: #e8eaed;
+}
+
+:is(#buttonPlain, #buttonFormatted):not(.selected):hover {
+  background-color: #303134;
+}
+
+:is(#buttonPlain, #buttonFormatted).selected {
+  background-color: #313a4c;
+  border-color: #8ab4f8;
+  color: #8ab4f8;
+}
