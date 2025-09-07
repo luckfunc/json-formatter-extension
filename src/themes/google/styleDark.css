@@ -1,45 +1,164 @@
-body {
-  background-color: #202124;
-  color: #e8eaed;
-}
+/* Google Dark Theme for JSON Formatter */
 
-.k {
-  color: #5bb974;
-}
-
-.s {
-  color: #ec8378;
-}
-
-.n {
-  color: #82b1ff;
-}
-
-.bl,
-.nl {
-  color: #c58af9;
-}
-
-.blockInner {
-  border-left-color: #5f6368;
-}
-
-.e {
-  color: #969ba1;
-}
-
-:is(#buttonPlain, #buttonFormatted) {
-  background-color: #202124;
+#optionBar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #2d2e30;
   border: 1px solid #5f6368;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#optionBar button {
+  margin: 0 4px;
+  padding: 8px 16px;
+  border: 1px solid #5f6368;
+  background: #2d2e30;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #e8eaed;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+}
+
+#optionBar button:hover {
+  background: #3c4043;
+  border-color: #5f6368;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#optionBar button.selected {
+  background: #8ab4f8;
+  color: #202124;
+  border-color: #8ab4f8;
+  box-shadow: 0 1px 2px rgba(138, 180, 248, 0.24);
+}
+
+#jsonFormatterParsed {
+  font-family: 'Roboto Mono', 'Courier New', Consolas, Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 16px;
+  white-space: pre-wrap;
+  position: relative;
+  background: #202124;
+  color: #e8eaed;
+  border-radius: 8px;
+}
+
+#jsonFormatterRaw {
+  background: #202124;
+  color: #e8eaed;
+  border-radius: 8px;
+}
+
+#jsonFormatterRaw pre {
+  font-family: 'Roboto Mono', 'Courier New', Consolas, Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 16px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.json-line {
+  display: block;
+  position: relative;
+}
+
+.json-property {
+  margin-left: 1.2em;
+  position: relative;
+  border-left: 1px solid #5f6368;
+  padding-left: 12px;
+}
+
+.json-item {
+  margin-left: 1.2em;
+  position: relative;
+  border-left: 1px solid #5f6368;
+  padding-left: 12px;
+}
+
+/* Google Material Dark 风格的连续垂直分割线 */
+.json-object,
+.json-array {
+  position: relative;
+}
+
+/* 根级别不需要边框 */
+#jsonFormatterParsed > .json-object,
+#jsonFormatterParsed > .json-array {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* 展开按钮 */
+.json-expander {
+  cursor: pointer;
+  user-select: none;
+  color: #9aa0a6;
+  margin-right: 6px;
+  display: inline-block;
+  width: 12px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+  font-size: 11px;
+}
+
+.json-expander:hover {
   color: #e8eaed;
 }
 
-:is(#buttonPlain, #buttonFormatted):not(.selected):hover {
-  background-color: #303134;
+/* Google Dark 风格的 JSON 颜色方案 */
+.json-key {
+  color: #8ab4f8;  /* 属性名 - Google 蓝色暗色版，清晰可见 */
+  font-weight: 500;
 }
 
-:is(#buttonPlain, #buttonFormatted).selected {
-  background-color: #313a4c;
-  border-color: #8ab4f8;
-  color: #8ab4f8;
+.json-string {
+  white-space: wrap;
+  color: #81c995;  /* 字符串值 - Google 绿色暗色版，舒适护眼 */
+}
+
+.json-number {
+  color: #f28b82;  /* 数字值 - Google 红色暗色版，温和醒目 */
+  font-weight: 500;
+}
+
+.json-boolean {
+  color: #c58af9;  /* 布尔值 - 紫色暗色版，关键字突出 */
+  font-weight: 600;
+}
+
+.json-null {
+  color: #9aa0a6;  /* null - Google 灰色暗色版，低调内敛 */
+  font-weight: 500;
+  font-style: italic;
+}
+
+.json-syntax {
+  color: #e8eaed;  /* 语法符号 - 浅色，清晰简洁 */
+  font-weight: 400;
+}
+
+.json-comma {
+  color: #e8eaed;
+}
+
+.json-comment {
+  color: #9aa0a6;  /* 注释 - Google 灰色，不干扰主要内容 */
+  font-style: italic;
+}
+
+.json-primitive {
+  display: inline;
 }

@@ -1,44 +1,163 @@
-body {
-  background-color: #1c1c1c;
-  color: #e5e5e5;
+/* Claude Dark Theme for JSON Formatter */
+
+#optionBar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.k {
-  color: #e39ef3;
+#optionBar button {
+  margin: 0 3px;
+  padding: 8px 14px;
+  border: 1px solid #374151;
+  background: #111827;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #d1d5db;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-.s {
-  color: #b3e5b3;
+#optionBar button:hover {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
 }
 
-.n {
-  color: #efc5a9;
+#optionBar button.selected {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
 }
 
-.bl,
-.nl {
-  color: #99d6f3;
+#jsonFormatterParsed {
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, "Monaco", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  white-space: pre-wrap;
+  position: relative;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
 }
 
-.blockInner {
-  border-left-color: #4a4a4a;
+#jsonFormatterRaw {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
 }
 
-.e {
-  color: #b2b2b2;
+#jsonFormatterRaw pre {
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, "Monaco", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
-:is(#buttonPlain, #buttonFormatted) {
-  background-color: #2a2a2a;
-  border: 1px solid #4a4a4a;
-  color: #e5e5e5;
+.json-line {
+  display: block;
+  position: relative;
 }
 
-:is(#buttonPlain, #buttonFormatted):not(.selected):hover {
-  background-color: #3a3a3a;
+.json-property {
+  margin-left: 1.4em;
+  position: relative;
+  border-left: 1px solid #374151;
+  padding-left: 14px;
 }
 
-:is(#buttonPlain, #buttonFormatted).selected {
-  background-color: #4a4a4a;
-  border-color: #e5e5e5;
+.json-item {
+  margin-left: 1.4em;
+  position: relative;
+  border-left: 1px solid #374151;
+  padding-left: 14px;
+}
+
+/* Claude 暗色风格的连续垂直分割线 */
+.json-object,
+.json-array {
+  position: relative;
+}
+
+/* 根级别不需要边框 */
+#jsonFormatterParsed > .json-object,
+#jsonFormatterParsed > .json-array {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* 展开按钮 */
+.json-expander {
+  cursor: pointer;
+  user-select: none;
+  color: #6b7280;
+  margin-right: 8px;
+  display: inline-block;
+  width: 14px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+  font-size: 11px;
+}
+
+.json-expander:hover {
+  color: #d1d5db;
+}
+
+/* Claude Dark 风格的 JSON 颜色方案 */
+.json-key {
+  color: #f87171;  /* 属性名 - Claude 红色暗色版，温暖醒目 */
+  font-weight: 600;
+}
+
+.json-string {
+  white-space: wrap;
+  color: #34d399;  /* 字符串值 - 明亮绿色，在暗背景下清晰 */
+}
+
+.json-number {
+  color: #60a5fa;  /* 数字值 - 明亮蓝色，专业清晰 */
+  font-weight: 500;
+}
+
+.json-boolean {
+  color: #a78bfa;  /* 布尔值 - 明亮紫色，优雅神秘 */
+  font-weight: 600;
+}
+
+.json-null {
+  color: #9ca3af;  /* null - 中性灰色，低调内敛 */
+  font-weight: 500;
+  font-style: italic;
+}
+
+.json-syntax {
+  color: #e2e8f0;  /* 语法符号 - 浅灰白色，清晰简洁 */
+  font-weight: 400;
+}
+
+.json-comma {
+  color: #e2e8f0;
+}
+
+.json-comment {
+  color: #64748b;  /* 注释 - 暗灰色，不干扰主要内容 */
+  font-style: italic;
+}
+
+.json-primitive {
+  display: inline;
 }

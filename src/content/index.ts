@@ -386,7 +386,7 @@ function isJsonPage(): boolean {
     const child = bodyChildren[i];
     if (child.tagName === 'PRE') {
       const content = child.textContent?.trim();
-      if (content && /^\s*[\{\[]/.test(content)) {
+      if (content && /^\s*[{[]/.test(content)) {
         return true;
       }
     }
@@ -396,7 +396,8 @@ function isJsonPage(): boolean {
 
 // 加载CSS样式文件
 async function loadCSS(): Promise<void> {
-  const { theme = 'google' } = await chrome.storage.local.get('theme');
+  const { themeStyle = 'google' } = await chrome.storage.local.get('themeStyle');
+  const theme = themeStyle;
 
   const styleUrl = chrome.runtime.getURL(`themes/${theme}/style.css`);
   const styleDarkUrl = chrome.runtime.getURL(`themes/${theme}/styleDark.css`);
@@ -438,8 +439,7 @@ async function initJsonFormatter(): Promise<void> {
   // 隐藏Chrome内置查看器
   const chromeContainer = document.querySelector('.json-formatter-container');
   if (chromeContainer) {
-    (chromeContainer as HTMLElement).style.display = 'none';
-    console.log('Hidden Chrome JSON viewer');
+    chromeContainer.remove();
   }
 
   const rawContent = getPreContentAndRemove();

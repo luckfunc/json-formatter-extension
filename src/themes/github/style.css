@@ -113,31 +113,35 @@
   color: #24292f;
 }
 
+/* GitHub 真实的 JSON 代码颜色 - 增强对比度 */
 .json-key {
-  color: #0969da;
-  font-weight: 600;
+  color: #032f62;  /* 属性名 - 深蓝色，更显眼 */
+  font-weight: 600;  /* 加粗让属性名更突出 */
 }
 
 .json-string {
-  color: #0a3069;
+  white-space: wrap;
+  color: #22863a;  /* 字符串值 - 绿色，与属性名形成对比 */
 }
 
 .json-number {
-  color: #0550ae;
+  color: #005cc5;  /* 数字值 - 明亮蓝色 */
+  font-weight: 500;
 }
 
 .json-boolean {
-  color: #8250df;
+  color: #cf222e;  /* GitHub 的布尔值颜色 - 红色 */
+  font-weight: 600;
 }
 
 .json-null {
-  color: #656d76;
-  font-style: italic;
+  color: #cf222e;  /* GitHub 的 null 颜色 - 红色 */
+  font-weight: 600;
 }
 
 .json-syntax {
-  color: #24292f;
-  font-weight: 600;
+  color: #24292f;  /* 语法符号保持默认黑色 */
+  font-weight: 400;
 }
 
 .json-comma {
@@ -145,7 +149,7 @@
 }
 
 .json-comment {
-  color: #656d76;
+  color: #656d76;  /* GitHub 的注释颜色 - 灰色 */
   font-style: italic;
 }
 

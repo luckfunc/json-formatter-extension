@@ -1,4 +1,4 @@
-/* GitHub Dark Theme for JSON Formatter */
+/* GitHub Dark Theme for JSON Formatter - Enhanced Contrast */
 
 #optionBar {
   position: fixed;
@@ -113,31 +113,35 @@
   color: #f0f6fc;
 }
 
+/* GitHub Dark 真实配色方案 */
 .json-key {
-  color: #79c0ff;
-  font-weight: 600;
+  color: #7ee787;  /* 属性名 - 绿色，就像截图中的 "private", "devDependencies" */
+  font-weight: 400;
 }
 
 .json-string {
-  color: #a5d6ff;
+  white-space: wrap;
+  color: #a5d6ff;  /* 字符串值 - 浅蓝色，就像截图中的 "^0.0.203" */
 }
 
 .json-number {
-  color: #79c0ff;
+  color: #a5d6ff;  /* 数字值 - 浅蓝色，与字符串一致 */
+  font-weight: 400;
 }
 
 .json-boolean {
-  color: #d2a8ff;
+  color: #79c0ff;  /* 布尔值 - 蓝色，就像截图中的 true */
+  font-weight: 400;
 }
 
 .json-null {
-  color: #8b949e;
-  font-style: italic;
+  color: #79c0ff;  /* null - 蓝色，与布尔值一致 */
+  font-weight: 400;
 }
 
 .json-syntax {
-  color: #f0f6fc;
-  font-weight: 600;
+  color: #f0f6fc;  /* 语法符号 - 白色 */
+  font-weight: 400;
 }
 
 .json-comma {
@@ -145,7 +149,7 @@
 }
 
 .json-comment {
-  color: #8b949e;
+  color: #8b949e;  /* 注释 - 灰色 */
   font-style: italic;
 }
 

@@ -9,10 +9,13 @@ export default defineConfig({
     rollupOptions: {
       input: {
         content: resolve(__dirname, 'src/content/index.ts'),
+        options: resolve(__dirname, 'src/options/index.html'),
+        'options-script': resolve(__dirname, 'src/options/index.ts'), // 单独打包 options 脚本
+        background: resolve(__dirname, 'src/background/index.ts')
       },
       output: {
         entryFileNames: chunk => {
-          if (chunk.name === 'background' || chunk.name === 'content') {
+          if (chunk.name === 'content') {
             return `[name]/index.js`;
           }
           return `[name]/index.js`;

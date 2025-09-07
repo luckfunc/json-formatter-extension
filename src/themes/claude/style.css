@@ -1,205 +1,163 @@
-body {
-    background-color: #1e1e1e;
-    user-select: text;
-    overflow-y: scroll !important;
-    margin: 0;
-    position: relative;
-    padding-top: 1px; /* hack to prevent margin collapse in 'Raw' */
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+/* Claude Light Theme for JSON Formatter */
+
 #optionBar {
-    user-select: none;
-    display: block;
-    position: absolute;
-    top: 13px;
-    right: 15px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10000;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
-#buttonFormatted,
-#buttonPlain {
-    border-radius: 2px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-    user-select: none;
-    background: linear-gradient(#404040, #383838 40%, #2d2d30);
-    border: 1px solid #555;
-    color: #d4d4d4;
-    font-size: 13px;
-    /* text-transform: uppercase; */
-    margin-bottom: 0px;
-    min-width: 4em;
-    padding: 3px 0;
-    position: relative;
-    z-index: 10;
-    display: inline-block;
-    width: 80px;
-    text-shadow: none;
+
+#optionBar button {
+  margin: 0 3px;
+  padding: 8px 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
-#buttonFormatted {
-    margin-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+
+#optionBar button:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #1f2937;
 }
-#buttonPlain {
-    margin-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: none;
+
+#optionBar button.selected {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
-:is(#buttonPlain, #buttonFormatted):not(.selected):hover {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(#4a4a4a, #424242 40%, #373739);
-    border-color: #666;
-    color: #ffffff;
-}
-:is(#buttonPlain, #buttonFormatted):active {
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(#2d2d30, #323234 40%, #1a1a1a);
-    color: #cccccc;
-}
-:is(#buttonPlain, #buttonFormatted).selected {
-    box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(#323234, #2d2d30 40%, #1a1a1a);
-    color: #cccccc;
-}
-:is(#buttonPlain, #buttonFormatted):focus {
-    outline: 0;
-}
-.entry {
-    display: block;
-    padding-left: 20px;
-    margin-left: -20px;
-    position: relative;
-}
+
 #jsonFormatterParsed {
-    padding-left: 28px;
-    padding-top: 6px;
-    line-height: 1.5;
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, "Monaco", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  white-space: pre-wrap;
+  position: relative;
+  background: #fefefe;
+  color: #1f2937;
+  border-radius: 8px;
 }
+
 #jsonFormatterRaw {
-    padding: 36px 10px 5px;
-}
-.collapsed {
-    white-space: nowrap;
-}
-.collapsed > .blockInner {
-    display: none;
-}
-.collapsed > .ell:after {
-    content: '…';
-    font-weight: bold;
-}
-.collapsed > .ell {
-    margin: 0 4px;
-    color: #888;
-}
-.collapsed .entry {
-    display: inline;
+  background: #fefefe;
+  color: #1f2937;
+  border-radius: 8px;
 }
 
-.collapsed:after {
-    content: attr(data-size);
-    color: #666;
+#jsonFormatterRaw pre {
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, "Monaco", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
-.e {
-    width: 20px;
-    height: 18px;
-    display: block;
-    position: absolute;
-    left: 0px;
-    top: 1px;
-    color: #d4d4d4;
-    z-index: 5;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.15;
+.json-line {
+  display: block;
+  position: relative;
 }
 
-.e::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 4px 0 4px 6.9px;
-    border-color: transparent transparent transparent currentColor;
-    transform: rotate(90deg) translateY(1px);
+.json-property {
+  margin-left: 1.4em;
+  position: relative;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 14px;
 }
 
-.collapsed > .e::after {
-    transform: none;
+.json-item {
+  margin-left: 1.4em;
+  position: relative;
+  border-left: 1px solid #e5e7eb;
+  padding-left: 14px;
 }
 
-.e:hover {
-    opacity: 0.35;
-}
-.e:active {
-    opacity: 0.5;
-}
-.collapsed .entry .e {
-    display: none;
-}
-.blockInner {
-    display: block;
-    padding-left: 24px;
-    border-left: 1px dotted #555;
-    margin-left: 2px;
-}
-#jsonFormatterParsed {
-    color: #d4d4d4;
+/* Claude 风格的连续垂直分割线 */
+.json-object,
+.json-array {
+  position: relative;
 }
 
-.entry {
-    font-size: 13px;
-    font-family: monospace;
+/* 根级别不需要边框 */
+#jsonFormatterParsed > .json-object,
+#jsonFormatterParsed > .json-array {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.b {
-    font-weight: bold;
-}
-.s {
-    color: #ce9178;
-    word-wrap: break-word;
-}
-a:link,
-a:visited {
-    text-decoration: none;
-    color: inherit;
-}
-a:hover,
-a:active {
-    text-decoration: underline;
-    color: #f0c674;
-}
-.bl,
-.nl,
-.n {
-    font-weight: bold;
-    color: #b5cea8;
-}
-.k {
-    color: #9cdcfe;
+/* 展开按钮 */
+.json-expander {
+  cursor: pointer;
+  user-select: none;
+  color: #9ca3af;
+  margin-right: 8px;
+  display: inline-block;
+  width: 14px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+  font-size: 11px;
 }
 
-[hidden] {
-    display: none !important;
-}
-span {
-    white-space: pre-wrap;
+.json-expander:hover {
+  color: #374151;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Claude 风格的 JSON 颜色方案 */
+.json-key {
+  color: #dc2626;  /* 属性名 - Claude 红色，醒目优雅 */
+  font-weight: 600;
 }
 
-#spinner {
-    animation: spin 2s linear infinite;
+.json-string {
+  white-space: wrap;
+  color: #059669;  /* 字符串值 - 深绿色，温和自然 */
+}
+
+.json-number {
+  color: #0369a1;  /* 数字值 - 深蓝色，专业稳重 */
+  font-weight: 500;
+}
+
+.json-boolean {
+  color: #7c3aed;  /* 布尔值 - 紫色，优雅神秘 */
+  font-weight: 600;
+}
+
+.json-null {
+  color: #6b7280;  /* null - 中性灰色，低调内敛 */
+  font-weight: 500;
+  font-style: italic;
+}
+
+.json-syntax {
+  color: #374151;  /* 语法符号 - 深灰色，清晰简洁 */
+  font-weight: 400;
+}
+
+.json-comma {
+  color: #374151;
+}
+
+.json-comment {
+  color: #9ca3af;  /* 注释 - 浅灰色，不干扰主要内容 */
+  font-style: italic;
+}
+
+.json-primitive {
+  display: inline;
 }
