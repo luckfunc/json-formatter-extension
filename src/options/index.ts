@@ -1,9 +1,9 @@
-// options.ts
-type ThemeMode = 'system' | 'force_light' | 'force_dark';
-type ThemeStyle = 'default' | 'github' | 'claude' | 'google';
+// options.ts - 简化版本
+type ThemeMode = 'auto' | 'light' | 'dark';
+type ThemeStyle = 'github' | 'claude' | 'google';
 
 interface ThemeSettings {
-  themeOverride?: ThemeMode;
+  themeMode?: ThemeMode;
   themeStyle?: ThemeStyle;
 }
 
@@ -18,17 +18,17 @@ const getRadioButton = (value: ThemeMode): HTMLInputElement => {
 };
 
 const isValidThemeMode = (value: any): value is ThemeMode => {
-  return ['system', 'force_light', 'force_dark'].includes(value);
+  return ['auto', 'light', 'dark'].includes(value);
 };
 
 const isValidThemeStyle = (value: any): value is ThemeStyle => {
-  return ['default', 'github', 'claude', 'google'].includes(value);
+  return ['github', 'claude', 'google'].includes(value);
 };
 
 const updateUI = (settings: ThemeSettings): void => {
   // 更新主题模式单选按钮
-  if (settings.themeOverride && isValidThemeMode(settings.themeOverride)) {
-    getRadioButton(settings.themeOverride).checked = true;
+  if (settings.themeMode && isValidThemeMode(settings.themeMode)) {
+    getRadioButton(settings.themeMode).checked = true;
   }
 
   // 更新主题样式下拉选择
@@ -53,10 +53,10 @@ const saveSettings = (newSettings: Partial<ThemeSettings>): void => {
 };
 
 // 页面加载时读取保存的设置
-chrome.storage.local.get(['themeOverride', 'themeStyle'], (result: ThemeSettings) => {
+chrome.storage.local.get(['themeMode', 'themeStyle'], (result: ThemeSettings) => {
   const settings = {
-    themeOverride: result.themeOverride || 'system',
-    themeStyle: result.themeStyle || 'default',
+    themeMode: result.themeMode || 'auto',
+    themeStyle: result.themeStyle || 'google',
   };
   updateUI(settings);
 });
@@ -65,7 +65,7 @@ chrome.storage.local.get(['themeOverride', 'themeStyle'], (result: ThemeSettings
 radioButtons.forEach((input) => {
   input.addEventListener('change', () => {
     if (input.checked && isValidThemeMode(input.value)) {
-      saveSettings({ themeOverride: input.value as ThemeMode });
+      saveSettings({ themeMode: input.value as ThemeMode });
     }
   });
 });
@@ -82,8 +82,8 @@ chrome.storage.onChanged.addListener((changes, areaName) => {
   if (areaName === 'local') {
     const updates: ThemeSettings = {};
 
-    if (changes.themeOverride && isValidThemeMode(changes.themeOverride.newValue)) {
-      updates.themeOverride = changes.themeOverride.newValue;
+    if (changes.themeMode && isValidThemeMode(changes.themeMode.newValue)) {
+      updates.themeMode = changes.themeMode.newValue;
     }
 
     if (changes.themeStyle && isValidThemeStyle(changes.themeStyle.newValue)) {

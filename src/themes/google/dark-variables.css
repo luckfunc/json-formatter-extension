@@ -1,0 +1,36 @@
+:root {
+  /* Google 风格字体 */
+  --font-mono: 'Roboto Mono', 'Courier New', Consolas, Monaco, monospace;
+  --font-ui: 'Google Sans', Roboto, Arial, sans-serif;
+
+  /* UI 组件颜色 */
+  --bg-primary: #202124;
+  --bg-secondary: #2d2e30;
+  --border-primary: #5f6368;
+  --border-secondary: #5f6368;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+  /* 按钮颜色 */
+  --btn-bg: #2d2e30;
+  --btn-border: #5f6368;
+  --btn-text: #e8eaed;
+  --btn-hover-bg: #3c4043;
+  --btn-selected-bg: #8ab4f8;
+  --btn-selected-text: #202124;
+
+  /* JSON 语法颜色 */
+  --json-key: #8ab4f8;
+  --json-string: #81c995;
+  --json-number: #f28b82;
+  --json-boolean: #c58af9;
+  --json-null: #9aa0a6;
+  --json-syntax: #e8eaed;
+  --json-comment: #9aa0a6;
+
+  /* 结构线条 */
+  --structure-line: #5f6368;
+  --expander-color: #9aa0a6;
+  --expander-hover: #e8eaed;
+}

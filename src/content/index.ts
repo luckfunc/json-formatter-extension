@@ -397,36 +397,48 @@ function isJsonPage(): boolean {
 // 加载CSS样式文件
 async function loadCSS(): Promise<void> {
   const { themeStyle = 'google' } = await chrome.storage.local.get('themeStyle');
-  const theme = themeStyle;
+  const { themeMode = 'auto' } = await chrome.storage.local.get('themeMode');
 
-  const styleUrl = chrome.runtime.getURL(`themes/${theme}/style.css`);
-  const styleDarkUrl = chrome.runtime.getURL(`themes/${theme}/styleDark.css`);
-
-  const [styleRes, styleDarkRes] = await Promise.all([fetch(styleUrl), fetch(styleDarkUrl)]);
-
-  const [css, darkThemeCss] = await Promise.all([styleRes.text(), styleDarkRes.text()]);
-
-  // 获取主题覆盖设置
-  const { themeOverride = 'system' } = await chrome.storage.local.get('themeOverride');
-
-  let finalCSS: string;
-  switch (themeOverride) {
-    case 'force_light':
-      finalCSS = css;
-      break;
-    case 'force_dark':
-      finalCSS = `${css}\n\n${darkThemeCss}`;
-      break;
-    case 'system':
-    default:
-      finalCSS = `${css}\n\n@media (prefers-color-scheme: dark) {\n${darkThemeCss}\n}`;
+  // 直接根据设置确定要加载的模式
+  let mode: 'light' | 'dark';
+  if (themeMode === 'auto') {
+    mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } else {
+    mode = themeMode as 'light' | 'dark';
   }
 
-  // 注入到 style 标签
-  const styleEl = document.createElement('style');
-  styleEl.id = 'jsonFormatterStyle';
-  styleEl.textContent = finalCSS;
-  document.head.appendChild(styleEl);
+  // 构建文件URL
+  const templateUrl = chrome.runtime.getURL('themes/template.css');
+  const variablesUrl = chrome.runtime.getURL(`themes/${themeStyle}/${mode}-variables.css`);
+
+  try {
+    // 并行加载文件
+    const [templateRes, variablesRes] = await Promise.all([
+      fetch(templateUrl),
+      fetch(variablesUrl),
+    ]);
+
+    const [templateCSS, variablesCSS] = await Promise.all([
+      templateRes.text(),
+      variablesRes.text(),
+    ]);
+
+    // 组合CSS
+    const finalCSS = `${variablesCSS}\n\n${templateCSS}`;
+
+    // 移除旧样式并注入新样式
+    const existingStyle = document.getElementById('jsonFormatterStyle');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
+    const styleEl = document.createElement('style');
+    styleEl.id = 'jsonFormatterStyle';
+    styleEl.textContent = finalCSS;
+    document.head.appendChild(styleEl);
+  } catch (error) {
+    console.error('Failed to load theme:', error);
+  }
 }
 
 // 主初始化函数

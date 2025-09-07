@@ -1,0 +1,38 @@
+/* themes/github/light-variables.css */
+
+:root {
+  /* 字体定义 */
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* UI 组件颜色 */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8fa;
+  --border-primary: #d0d7de;
+  --border-secondary: #d0d7de;
+  --text-primary: #24292f;
+  --text-secondary: #656d76;
+  --shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+
+  /* 按钮颜色 */
+  --btn-bg: #f6f8fa;
+  --btn-border: #d0d7de;
+  --btn-text: #24292f;
+  --btn-hover-bg: #f3f4f6;
+  --btn-selected-bg: #0969da;
+  --btn-selected-text: #ffffff;
+
+  /* JSON 语法颜色 */
+  --json-key: #032f62;
+  --json-string: #22863a;
+  --json-number: #005cc5;
+  --json-boolean: #cf222e;
+  --json-null: #cf222e;
+  --json-syntax: #24292f;
+  --json-comment: #656d76;
+
+  /* 结构线条 */
+  --structure-line: #d0d7de;
+  --expander-color: #656d76;
+  --expander-hover: #24292f;
+}

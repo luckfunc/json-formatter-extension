@@ -1,0 +1,38 @@
+/* themes/claude/dark-variables.css */
+
+:root {
+  /* Claude 风格字体 */
+  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, "Monaco", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* UI 组件颜色 */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1f2937;
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --text-primary: #e2e8f0;
+  --text-secondary: #6b7280;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  /* 按钮颜色 */
+  --btn-bg: #111827;
+  --btn-border: #374151;
+  --btn-text: #d1d5db;
+  --btn-hover-bg: #374151;
+  --btn-selected-bg: #ef4444;
+  --btn-selected-text: #ffffff;
+
+  /* JSON 语法颜色 */
+  --json-key: #f87171;
+  --json-string: #34d399;
+  --json-number: #60a5fa;
+  --json-boolean: #a78bfa;
+  --json-null: #9ca3af;
+  --json-syntax: #e2e8f0;
+  --json-comment: #64748b;
+
+  /* 结构线条 */
+  --structure-line: #374151;
+  --expander-color: #6b7280;
+  --expander-hover: #d1d5db;
+}
