@@ -44,13 +44,11 @@
   position: relative;
   background: var(--bg-primary);
   color: var(--text-primary);
-  border-radius: 8px;
 }
 
 #jsonFormatterRaw {
   background: var(--bg-primary);
   color: var(--text-primary);
-  border-radius: 8px;
 }
 
 #jsonFormatterRaw pre {
