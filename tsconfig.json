@@ -9,7 +9,16 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "outDir": "dist",
-    "types": ["chrome", "node" ]
+    "types": ["chrome", "node" ],
+    "baseUrl": ".",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@types": ["src/types/index.ts"],
+      "@types/*": ["types/*"],
+      "@utils": ["src/utils/index.ts"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
   "include": ["src"]
 }
