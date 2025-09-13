@@ -76,184 +76,106 @@ function parseToNodes(value: any, key: string | number | null = null, path = '')
 
 // 渲染函数
 function renderNode(node: JsonNode, isLast = false): HTMLElement {
+  const line = createElement('div', 'json-line');
+  const isContainer = node.type === 'object' || node.type === 'array';
+
+  // The element with the data-path for click handling is always the line.
+  line.dataset.path = node.path;
+
+  if (isContainer) {
+    line.classList.add(`json-${node.type}`);
+    const expander = createElement('span', 'json-expander', node.expanded ? '▼' : '▶');
+    line.appendChild(expander);
+  }
+
+  // Render key if it's an object property
+  if (typeof node.key === 'string') {
+    const keySpan = createElement('span', 'json-key', `"${node.key}"`);
+    const colon = createElement('span', 'json-syntax', ': ');
+    line.appendChild(keySpan);
+    line.appendChild(colon);
+  }
+
+  // Render the actual value ({...}, [...] or primitive)
+  const valueElement = renderValue(node, isLast);
+  line.appendChild(valueElement);
+
+  return line;
+}
+
+function renderValue(node: JsonNode, isLast: boolean): HTMLElement {
+  const valueContainer = createElement('span', 'json-value');
+  const comma = isLast ? '' : ',';
+
   switch (node.type) {
     case 'object':
-      return renderObject(node, isLast);
-    case 'array':
-      return renderArray(node, isLast);
-    default:
-      return renderPrimitive(node, isLast);
-  }
-}
+    case 'array': {
+      const openSyntax = node.type === 'object' ? '{' : '[';
+      const closeSyntax = node.type === 'object' ? '}' : ']';
+      const childCount = node.children?.length || 0;
 
-function renderObject(node: JsonNode, isLast = false): HTMLElement {
-  const container = createElement('div', 'json-object');
-  container.dataset.path = node.path;
-  container.dataset.type = node.type;
+      valueContainer.appendChild(createElement('span', 'json-syntax', openSyntax));
 
-  const childCount = node.children?.length || 0;
-  const comma = isLast ? '' : ',';
-
-  if (childCount === 0) {
-    // 空对象
-    container.innerHTML = `<span class="json-syntax">{}</span><span class="json-comma">${comma}</span>`;
-    return container;
-  }
-
-  if (!node.expanded) {
-    // 折叠状态
-    const expander = createElement('span', 'json-expander', '▶');
-    const syntax = createElement('span', 'json-syntax', '{ … }');
-    const commentText = ` // ${childCount} ${childCount === 1 ? 'property' : 'properties'}`;
-    const comment = createElement('span', 'json-comment', commentText);
-    const commaSpan = createElement('span', 'json-comma', comma);
-
-    container.appendChild(expander);
-    container.appendChild(syntax);
-    container.appendChild(commaSpan);
-    container.appendChild(comment);
-  } else {
-    // 展开状态
-    const firstLine = createElement('div', 'json-line');
-    const expander = createElement('span', 'json-expander', '▼');
-    const openBrace = createElement('span', 'json-syntax', '{');
-
-    firstLine.appendChild(expander);
-    firstLine.appendChild(openBrace);
-    container.appendChild(firstLine);
-
-    // 渲染子元素
-    if (node.children) {
-      node.children.forEach((child, index) => {
-        const childLine = createElement('div', 'json-line json-property');
-
-        // 键名
-        if (child.key !== null) {
-          const keySpan = createElement('span', 'json-key', `"${child.key}"`);
-          const colon = createElement('span', 'json-syntax', ': ');
-          childLine.appendChild(keySpan);
-          childLine.appendChild(colon);
+      if (childCount === 0) {
+        valueContainer.appendChild(createElement('span', 'json-syntax', closeSyntax));
+      } else if (!node.expanded) {
+        const syntax = createElement('span', 'json-syntax', ' … ');
+        const items = node.type === 'object' ? 'properties' : 'items';
+        const item = node.type === 'object' ? 'property' : 'item';
+        const commentText = ` // ${childCount} ${childCount === 1 ? item : items}`;
+        const comment = createElement('span', 'json-comment', commentText);
+        valueContainer.appendChild(syntax);
+        valueContainer.appendChild(createElement('span', 'json-syntax', closeSyntax));
+        valueContainer.appendChild(comment);
+      } else {
+        // Expanded state: render children
+        const childrenContainer = createElement('div', 'json-children');
+        if (node.children) {
+          node.children.forEach((child, index) => {
+            const isChildLast = index === node.children.length - 1;
+            childrenContainer.appendChild(renderNode(child, isChildLast));
+          });
         }
-
-        // 值
-        const isChildLast = index === node.children!.length - 1;
-        const valueElement = renderNode(child, isChildLast);
-        childLine.appendChild(valueElement);
-
-        container.appendChild(childLine);
-      });
+        valueContainer.appendChild(childrenContainer);
+        valueContainer.appendChild(createElement('div', 'json-line', closeSyntax));
+      }
+      break;
     }
 
-    // 闭括号
-    const lastLine = createElement('div', 'json-line');
-    const closeBrace = createElement('span', 'json-syntax', '}');
-    const commaSpan = createElement('span', 'json-comma', comma);
-
-    lastLine.appendChild(closeBrace);
-    lastLine.appendChild(commaSpan);
-    container.appendChild(lastLine);
-  }
-
-  return container;
-}
-
-function renderArray(node: JsonNode, isLast = false): HTMLElement {
-  const container = createElement('div', 'json-array');
-  container.dataset.path = node.path;
-  container.dataset.type = node.type;
-
-  const childCount = node.children?.length || 0;
-  const comma = isLast ? '' : ',';
-
-  if (childCount === 0) {
-    // 空数组
-    container.innerHTML = `<span class="json-syntax">[]</span><span class="json-comma">${comma}</span>`;
-    return container;
-  }
-
-  if (!node.expanded) {
-    // 折叠状态
-    const expander = createElement('span', 'json-expander', '▶');
-    const syntax = createElement('span', 'json-syntax', '[ … ]');
-    const commentText = ` // ${childCount} ${childCount === 1 ? 'item' : 'items'}`;
-    const comment = createElement('span', 'json-comment', commentText);
-    const commaSpan = createElement('span', 'json-comma', comma);
-
-    container.appendChild(expander);
-    container.appendChild(syntax);
-    container.appendChild(commaSpan);
-    container.appendChild(comment);
-  } else {
-    // 展开状态
-    const firstLine = createElement('div', 'json-line');
-    const expander = createElement('span', 'json-expander', '▼');
-    const openBracket = createElement('span', 'json-syntax', '[');
-
-    firstLine.appendChild(expander);
-    firstLine.appendChild(openBracket);
-    container.appendChild(firstLine);
-
-    // 渲染子元素
-    if (node.children) {
-      node.children.forEach((child, index) => {
-        const childLine = createElement('div', 'json-line json-item');
-
-        const isChildLast = index === node.children!.length - 1;
-        const valueElement = renderNode(child, isChildLast);
-        childLine.appendChild(valueElement);
-
-        container.appendChild(childLine);
-      });
-    }
-
-    // 闭括号
-    const lastLine = createElement('div', 'json-line');
-    const closeBracket = createElement('span', 'json-syntax', ']');
-    const commaSpan = createElement('span', 'json-comma', comma);
-
-    lastLine.appendChild(closeBracket);
-    lastLine.appendChild(commaSpan);
-    container.appendChild(lastLine);
-  }
-
-  return container;
-}
-
-function renderPrimitive(node: JsonNode, isLast = false): HTMLElement {
-  const comma = isLast ? '' : ',';
-  let displayValue: string;
-  let className: string;
-
-  switch (node.type) {
     case 'string':
-      displayValue = `"${node.value}"`;
-      className = 'json-string';
+      valueContainer.className = 'json-string';
+      valueContainer.textContent = `"${node.value}"`;
       break;
     case 'number':
-      displayValue = String(node.value);
-      className = 'json-number';
+      valueContainer.className = 'json-number';
+      valueContainer.textContent = String(node.value);
       break;
     case 'boolean':
-      displayValue = String(node.value);
-      className = 'json-boolean';
+      valueContainer.className = 'json-boolean';
+      valueContainer.textContent = String(node.value);
       break;
     case 'null':
-      displayValue = 'null';
-      className = 'json-null';
+      valueContainer.className = 'json-null';
+      valueContainer.textContent = 'null';
       break;
     default:
-      displayValue = String(node.value);
-      className = 'json-unknown';
+      valueContainer.className = 'json-unknown';
+      valueContainer.textContent = String(node.value);
+      break;
   }
 
-  const span = createElement('span', className, displayValue);
   const commaSpan = createElement('span', 'json-comma', comma);
+  if (node.type === 'object' || node.type === 'array') {
+    if (node.expanded && node.children && node.children.length > 0) {
+      valueContainer.lastChild?.appendChild(commaSpan);
+    } else {
+      valueContainer.appendChild(commaSpan);
+    }
+  } else {
+    valueContainer.appendChild(commaSpan);
+  }
 
-  const container = createElement('span', 'json-primitive');
-  container.appendChild(span);
-  container.appendChild(commaSpan);
-
-  return container;
+  return valueContainer;
 }
 
 // 事件处理

@@ -66,14 +66,14 @@
   position: relative;
 }
 
-.json-property {
-  margin-left: 1.2em;
-  position: relative;
-  border-left: 1px solid var(--structure-line);
-  padding-left: 12px;
-}
+/*.json-property {*/
+/*  margin-left: 1.2em;*/
+/*  position: relative;*/
+/*  border-left: 1px solid var(--structure-line);*/
+/*  padding-left: 12px;*/
+/*}*/
 
-.json-item {
+.json-children {
   margin-left: 1.2em;
   position: relative;
   border-left: 1px solid var(--structure-line);
