@@ -10,9 +10,7 @@ export default defineConfig({
       input: {
         content: resolve(__dirname, 'src/content/index.ts'),
         options: resolve(__dirname, 'src/options/index.html'),
-        'options-script': resolve(__dirname, 'src/options/index.ts'), // 单独打包 options 脚本
         popup: resolve(__dirname, 'src/popup/index.html'),
-        'popup-script': resolve(__dirname, 'src/popup/index.ts'),
       },
       output: {
         entryFileNames: chunk => {

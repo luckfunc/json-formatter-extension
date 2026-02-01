@@ -141,6 +141,16 @@ async function initJsonFormatter(): Promise<void> {
   createUI(rawContent, { onFormatted: switchToFormatted, onRaw: switchToRaw });
   rerender();
   document.addEventListener('click', handleExpanderClick);
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName !== 'local') {
+      return;
+    }
+    if (changes.themeMode || changes.themeStyle) {
+      loadCSS().catch((error) => {
+        console.error('Failed to reload theme:', error);
+      });
+    }
+  });
 
   console.log('JSON Formatter initialized successfully!');
 }
