@@ -98,7 +98,6 @@ public/build/
 
 # Gatsby build output
 .cache/
-public
 
 # Mac files
 .DS_Store
