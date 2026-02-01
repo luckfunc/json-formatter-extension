@@ -154,11 +154,12 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  opacity: 0.6;
+  opacity: 0;
   font-size: 0;
   line-height: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
   vertical-align: middle;
+  pointer-events: none;
 }
 
 .json-expander::before {
@@ -183,11 +184,18 @@
   visibility: hidden;
 }
 
-.json-expander:hover {
+.json-row:hover .json-expander {
   opacity: 0.7;
+  pointer-events: auto;
 }
 
-.json-expander:active {
+.json-expander[data-expanded='false'] {
+  opacity: 0.7;
+  pointer-events: auto;
+}
+
+.json-row:hover .json-expander:active,
+.json-expander[data-expanded='false']:active {
   opacity: 0.9;
 }
 
