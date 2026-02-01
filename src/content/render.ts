@@ -103,7 +103,7 @@ export function renderNode(node: JsonNode, isLast = false): HTMLElement {
   const expander = createElement(
     'span',
     isExpandable ? 'json-expander' : 'json-expander-placeholder',
-    isExpandable ? (node.expanded ? '▼' : '▶') : ''
+    ''
   );
   if (!isExpandable) {
     expander.setAttribute('aria-hidden', 'true');

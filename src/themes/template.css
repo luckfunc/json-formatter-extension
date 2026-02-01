@@ -92,10 +92,6 @@
 .json-line {
   display: block;
   position: relative;
-  padding-left: 20px;
-  margin-left: -20px;
-  font-size: 13px;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
 }
 
 /*.json-property {*/
@@ -106,11 +102,10 @@
 /*}*/
 
 .json-children {
-  display: block;
-  padding-left: 24px;
-  border-left: 1px dotted var(--structure-line);
-  margin-left: 2px;
+  margin-left: 1.2em;
   position: relative;
+  border-left: 1px solid var(--structure-line);
+  padding-left: 12px;
 }
 
 .json-object,
@@ -129,47 +124,49 @@
   cursor: pointer;
   user-select: none;
   color: var(--expander-color);
-  width: 20px;
-  height: 18px;
-  display: flex;
+  width: 12px;
+  height: 12px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  left: 0;
-  top: 1px;
-  z-index: 5;
-  opacity: 0.15;
-  background-repeat: no-repeat;
-  background-position: center center;
+  position: relative;
+  opacity: 0.6;
   font-size: 0;
+  line-height: 0;
   transition: opacity 0.2s ease;
+  margin-right: 4px;
+  vertical-align: middle;
 }
 
-.json-expander::after {
+.json-expander::before {
   content: '';
   display: block;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 4px 0 4px 6.9px;
-  border-color: transparent transparent transparent currentColor;
-  transform: rotate(90deg) translateY(1px);
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transform-origin: center;
 }
 
-.json-expander[data-expanded='false']::after {
-  transform: none;
+.json-expander[data-expanded='false']::before {
+  transform: rotate(-45deg);
 }
 
 .json-expander-placeholder {
-  display: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  visibility: hidden;
 }
 
 .json-expander:hover {
-  opacity: 0.35;
+  opacity: 0.7;
 }
 
 .json-expander:active {
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .json-key {
