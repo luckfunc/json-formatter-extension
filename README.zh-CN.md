@@ -2,6 +2,8 @@
 
 [Report Bug](https://github.com/luckfunc/json-formatter-extension/issues) · [Request Feature](https://github.com/luckfunc/json-formatter-extension/issues/new) · [English](README.md) · 中文
 
+![预览](public/preview.png)
+
 一个用于浏览器的 JSON 格式化插件
 
 ## 功能
