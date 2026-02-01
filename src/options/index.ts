@@ -1,6 +1,6 @@
 // options.ts - 简化版本
 type ThemeMode = 'auto' | 'light' | 'dark';
-type ThemeStyle = 'github' | 'claude' | 'google';
+type ThemeStyle = 'classic' | 'github' | 'claude' | 'google';
 
 interface ThemeSettings {
   themeMode?: ThemeMode;
@@ -22,7 +22,7 @@ const isValidThemeMode = (value: any): value is ThemeMode => {
 };
 
 const isValidThemeStyle = (value: any): value is ThemeStyle => {
-  return ['github', 'claude', 'google'].includes(value);
+  return ['classic', 'github', 'claude', 'google'].includes(value);
 };
 
 const updateUI = (settings: ThemeSettings): void => {
@@ -56,7 +56,7 @@ const saveSettings = (newSettings: Partial<ThemeSettings>): void => {
 chrome.storage.local.get(['themeMode', 'themeStyle'], (result: ThemeSettings) => {
   const settings = {
     themeMode: result.themeMode || 'auto',
-    themeStyle: result.themeStyle || 'google',
+    themeStyle: result.themeStyle || 'classic',
   };
   updateUI(settings);
 });

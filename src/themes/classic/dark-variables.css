@@ -1,0 +1,35 @@
+/* themes/classic/dark-variables.css */
+
+:root {
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #1a1a1a;
+  --border-primary: #1a1a1a;
+  --border-secondary: #1a1a1a;
+  --text-primary: #b6b6b6;
+  --text-secondary: #707070;
+  --shadow: 0px 0px 3px 3px #1a1a1a;
+
+  --btn-bg: hsl(200, 35%, 60%);
+  --btn-border: transparent;
+  --btn-text: #000;
+  --btn-hover-bg: hsl(200, 50%, 70%);
+  --btn-selected-bg: hsl(200, 40%, 60%);
+  --btn-selected-text: #000;
+  --btn-selected-border: transparent;
+
+  --json-key: #fff;
+  --json-string: hsl(114, 100%, 35%);
+  --json-number: hsl(200, 100%, 70%);
+  --json-boolean: hsl(200, 100%, 70%);
+  --json-null: hsl(200, 100%, 70%);
+  --json-syntax: #b6b6b6;
+  --json-comment: #707070;
+
+  --structure-line: #4d4d4d;
+  --expander-color: #fff;
+  --expander-hover: #fff;
+}

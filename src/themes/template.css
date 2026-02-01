@@ -1,27 +1,35 @@
 #optionBar {
-  position: fixed;
-  top: 10px;
+  user-select: none;
+  position: absolute;
+  z-index: 10;
+  top: 8px;
   right: 10px;
-  z-index: 10000;
   background: var(--bg-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 6px;
-  padding: 8px;
   box-shadow: var(--shadow);
+  padding: 5px;
+  border: 1px solid var(--border-primary);
+  border-radius: 2px;
 }
 
 #optionBar button {
-  margin: 0 3px;
-  padding: 6px 10px;
-  border: 1px solid var(--btn-border);
+  border-radius: 2px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  user-select: none;
   background: var(--btn-bg);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
+  border: 1px solid var(--btn-border);
   color: var(--btn-text);
-  font-weight: 500;
+  font-size: 13px;
+  margin-bottom: 0;
+  min-width: 4em;
+  padding: 3px 0;
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  width: 80px;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
   font-family: var(--font-ui);
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 #optionBar button:hover {
@@ -29,17 +37,37 @@
   border-color: var(--border-secondary);
 }
 
+#optionBar button:active {
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+  background: var(--btn-active-bg, var(--btn-hover-bg));
+  color: var(--btn-active-text, var(--btn-text));
+}
+
 #optionBar button.selected {
   background: var(--btn-selected-bg);
   color: var(--btn-selected-text);
-  border-color: var(--btn-selected-bg);
+  border-color: var(--btn-selected-border, var(--btn-border));
+  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+#btnFormatted {
+  margin-left: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+
+#btnRaw {
+  margin-right: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 #jsonFormatterParsed {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
   font-size: 13px;
   line-height: 1.5;
-  padding: 16px;
+  padding: 6px 16px 16px 28px;
   white-space: pre-wrap;
   position: relative;
   background: var(--bg-primary);
@@ -55,7 +83,7 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
   font-size: 13px;
   line-height: 1.5;
-  padding: 16px;
+  padding: 36px 10px 5px;
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -64,6 +92,10 @@
 .json-line {
   display: block;
   position: relative;
+  padding-left: 20px;
+  margin-left: -20px;
+  font-size: 13px;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
 }
 
 /*.json-property {*/
@@ -74,10 +106,11 @@
 /*}*/
 
 .json-children {
-  margin-left: 1.2em;
+  display: block;
+  padding-left: 24px;
+  border-left: 1px dotted var(--structure-line);
+  margin-left: 2px;
   position: relative;
-  border-left: 1px solid var(--structure-line);
-  padding-left: 12px;
 }
 
 .json-object,
@@ -96,30 +129,52 @@
   cursor: pointer;
   user-select: none;
   color: var(--expander-color);
-  margin-right: 4px;
-  display: inline-block;
-  width: 10px;
-  position: relative;
-  z-index: 1;
-  transition: color 0.2s ease;
-  font-size: 10px;
-  vertical-align: baseline;
+  width: 20px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  z-index: 5;
+  opacity: 0.15;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0;
+  transition: opacity 0.2s ease;
+}
+
+.json-expander::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 6.9px;
+  border-color: transparent transparent transparent currentColor;
+  transform: rotate(90deg) translateY(1px);
+}
+
+.json-expander[data-expanded='false']::after {
+  transform: none;
 }
 
 .json-expander-placeholder {
-  display: inline-block;
-  width: 10px;
-  margin-right: 4px;
-  visibility: hidden;
+  display: none;
 }
 
 .json-expander:hover {
-  color: var(--expander-hover);
+  opacity: 0.35;
+}
+
+.json-expander:active {
+  opacity: 0.5;
 }
 
 .json-key {
   color: var(--json-key);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .json-string {
@@ -129,18 +184,17 @@
 
 .json-number {
   color: var(--json-number);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .json-boolean {
   color: var(--json-boolean);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .json-null {
   color: var(--json-null);
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 700;
 }
 
 .json-syntax {

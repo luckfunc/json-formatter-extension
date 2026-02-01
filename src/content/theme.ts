@@ -1,5 +1,5 @@
 export async function loadCSS(): Promise<void> {
-  const { themeStyle = 'google' } = await chrome.storage.local.get('themeStyle');
+  const { themeStyle = 'classic' } = await chrome.storage.local.get('themeStyle');
   const { themeMode = 'auto' } = await chrome.storage.local.get('themeMode');
 
   let mode: 'light' | 'dark';

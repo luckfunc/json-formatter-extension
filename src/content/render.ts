@@ -92,6 +92,9 @@ export function renderNode(node: JsonNode, isLast = false): HTMLElement {
 
   if (isContainer) {
     line.classList.add(`json-${node.type}`);
+    if (!node.expanded) {
+      line.classList.add('collapsed');
+    }
   }
 
   const expander = createElement(
@@ -101,6 +104,8 @@ export function renderNode(node: JsonNode, isLast = false): HTMLElement {
   );
   if (!isContainer) {
     expander.setAttribute('aria-hidden', 'true');
+  } else {
+    expander.dataset.expanded = node.expanded ? 'true' : 'false';
   }
   line.appendChild(expander);
 
