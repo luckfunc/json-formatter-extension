@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>JSON Formatter</title>
+    <style>
+      body {
+        margin: 12px;
+        font-family: system-ui, sans-serif;
+        min-width: 240px;
+      }
+
+      .section {
+        border: 1px solid currentColor;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .row label {
+        width: 70px;
+      }
+
+      select {
+        flex: 1;
+        padding: 6px 8px;
+        border-radius: 4px;
+        border: 1px solid currentColor;
+        background-color: transparent;
+        color: inherit;
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      .radio-group label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        height: 24px;
+        cursor: pointer;
+      }
+
+      #status {
+        margin-top: 8px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        background-color: #e8f5e8;
+        color: #2d5a2d;
+        border: 1px solid #c3e6c3;
+      }
+
+      #status.show {
+        opacity: 1;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #292a2d;
+          color: #e8eaed;
+        }
+
+        select {
+          background-color: #3c4043;
+        }
+
+        #status {
+          background-color: #2d3a2d;
+          color: #a8d8a8;
+          border-color: #4a6a4a;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="title">Theme</div>
+      <div class="row">
+        <label for="theme-select">Style</label>
+        <select id="theme-select">
+          <option value="classic">Classic</option>
+          <option value="vscode">VSCode</option>
+          <option value="github">GitHub</option>
+          <option value="claude">Claude</option>
+          <option value="google">Google</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="title">Mode</div>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="theme" value="auto" />
+          Auto
+        </label>
+        <label>
+          <input type="radio" name="theme" value="dark" />
+          Dark
+        </label>
+        <label>
+          <input type="radio" name="theme" value="light" />
+          Light
+        </label>
+      </div>
+    </div>
+
+    <div id="status"></div>
+
+    <script src="../../popup-script/index.js"></script>
+  </body>
+</html>

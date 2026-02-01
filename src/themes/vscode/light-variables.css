@@ -1,0 +1,35 @@
+/* themes/vscode/light-variables.css */
+
+:root {
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f3f3;
+  --border-primary: #d4d4d4;
+  --border-secondary: #c8c8c8;
+  --text-primary: #333333;
+  --text-secondary: #6c6c6c;
+  --shadow: 0px 0px 6px rgba(0, 0, 0, 0.06);
+
+  --btn-bg: #e7e7e7;
+  --btn-border: #c8c8c8;
+  --btn-text: #333333;
+  --btn-hover-bg: #dcdcdc;
+  --btn-selected-bg: #007acc;
+  --btn-selected-text: #ffffff;
+  --btn-selected-border: #007acc;
+
+  --json-key: #001080;
+  --json-string: #a31515;
+  --json-number: #098658;
+  --json-boolean: #0000ff;
+  --json-null: #0000ff;
+  --json-syntax: #333333;
+  --json-comment: #008000;
+
+  --structure-line: #d4d4d4;
+  --expander-color: #6c6c6c;
+  --expander-hover: #333333;
+}
