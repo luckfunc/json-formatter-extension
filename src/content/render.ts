@@ -27,9 +27,10 @@ function renderValue(node: JsonNode, isLast: boolean): HTMLElement {
         valueContainer.appendChild(comment);
       } else {
         const childrenContainer = createElement('div', 'json-children');
-        if (node.children) {
-          node.children.forEach((child, index) => {
-            const isChildLast = index === node.children.length - 1;
+        const children = node.children;
+        if (children) {
+          children.forEach((child, index) => {
+            const isChildLast = index === children.length - 1;
             childrenContainer.appendChild(renderNode(child, isChildLast));
           });
         }
@@ -87,22 +88,24 @@ function createClosingLine(closeSyntax: string): HTMLElement {
 export function renderNode(node: JsonNode, isLast = false): HTMLElement {
   const line = createElement('div', 'json-line');
   const isContainer = node.type === 'object' || node.type === 'array';
+  const childCount = node.children?.length ?? 0;
+  const isExpandable = isContainer && childCount > 0;
 
   line.dataset.path = node.path;
 
   if (isContainer) {
     line.classList.add(`json-${node.type}`);
-    if (!node.expanded) {
+    if (isExpandable && !node.expanded) {
       line.classList.add('collapsed');
     }
   }
 
   const expander = createElement(
     'span',
-    isContainer ? 'json-expander' : 'json-expander-placeholder',
-    isContainer ? (node.expanded ? '▼' : '▶') : ''
+    isExpandable ? 'json-expander' : 'json-expander-placeholder',
+    isExpandable ? (node.expanded ? '▼' : '▶') : ''
   );
-  if (!isContainer) {
+  if (!isExpandable) {
     expander.setAttribute('aria-hidden', 'true');
   } else {
     expander.dataset.expanded = node.expanded ? 'true' : 'false';

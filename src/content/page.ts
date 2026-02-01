@@ -1,6 +1,8 @@
 export function getPreContentAndRemove(): string | null {
   const preElement = document.querySelector('body > pre') as HTMLPreElement;
-  if (!preElement) return null;
+  if (!preElement) {
+    return null;
+  }
 
   const content = preElement.textContent;
   preElement.remove();

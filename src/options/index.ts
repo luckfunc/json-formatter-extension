@@ -13,7 +13,9 @@ const statusElement = document.getElementById('status') as HTMLElement;
 
 const getRadioButton = (value: ThemeMode): HTMLInputElement => {
   const el = radioButtons.find((input) => input.value === value);
-  if (!el) throw new Error(`Could not find radio button with value "${value}".`);
+  if (!el) {
+    throw new Error(`Could not find radio button with value "${value}".`);
+  }
   return el;
 };
 

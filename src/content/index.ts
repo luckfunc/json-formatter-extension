@@ -9,10 +9,14 @@ import { createUI } from './ui';
 let state: FormatterState | null = null;
 
 function rerender(): void {
-  if (!state) return;
+  if (!state) {
+    return;
+  }
 
   const container = document.getElementById('jsonFormatterParsed');
-  if (!container) return;
+  if (!container) {
+    return;
+  }
 
   container.innerHTML = '';
   const newDom = renderNode(state.rootNode, true);
@@ -30,17 +34,23 @@ function handleExpanderClick(event: MouseEvent): void {
   event.stopPropagation();
 
   const nodeElement = target.closest('[data-path]') as HTMLElement;
-  if (!nodeElement) return;
+  if (!nodeElement) {
+    return;
+  }
 
   const { path } = nodeElement.dataset;
-  if (path === undefined || !state) return;
+  if (path === undefined || !state) {
+    return;
+  }
 
   toggleNodeExpansion(state.rootNode, path);
   rerender();
 }
 
 function switchToFormatted(): void {
-  if (!state) return;
+  if (!state) {
+    return;
+  }
 
   state.viewMode = 'formatted';
 
@@ -49,14 +59,24 @@ function switchToFormatted(): void {
   const formattedBtn = document.getElementById('btnFormatted');
   const rawBtn = document.getElementById('btnRaw');
 
-  if (formattedContainer) formattedContainer.style.display = 'block';
-  if (rawContainer) rawContainer.style.display = 'none';
-  if (formattedBtn) formattedBtn.classList.add('selected');
-  if (rawBtn) rawBtn.classList.remove('selected');
+  if (formattedContainer) {
+    formattedContainer.style.display = 'block';
+  }
+  if (rawContainer) {
+    rawContainer.style.display = 'none';
+  }
+  if (formattedBtn) {
+    formattedBtn.classList.add('selected');
+  }
+  if (rawBtn) {
+    rawBtn.classList.remove('selected');
+  }
 }
 
 function switchToRaw(): void {
-  if (!state) return;
+  if (!state) {
+    return;
+  }
 
   state.viewMode = 'raw';
 
@@ -65,10 +85,18 @@ function switchToRaw(): void {
   const formattedBtn = document.getElementById('btnFormatted');
   const rawBtn = document.getElementById('btnRaw');
 
-  if (formattedContainer) formattedContainer.style.display = 'none';
-  if (rawContainer) rawContainer.style.display = 'block';
-  if (formattedBtn) formattedBtn.classList.remove('selected');
-  if (rawBtn) rawBtn.classList.add('selected');
+  if (formattedContainer) {
+    formattedContainer.style.display = 'none';
+  }
+  if (rawContainer) {
+    rawContainer.style.display = 'block';
+  }
+  if (formattedBtn) {
+    formattedBtn.classList.remove('selected');
+  }
+  if (rawBtn) {
+    rawBtn.classList.add('selected');
+  }
 }
 
 async function initJsonFormatter(): Promise<void> {
