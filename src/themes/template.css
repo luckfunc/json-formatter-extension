@@ -5,17 +5,17 @@
   z-index: 10000;
   background: var(--bg-secondary);
   border: 1px solid var(--border-primary);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 8px;
   box-shadow: var(--shadow);
 }
 
 #optionBar button {
   margin: 0 3px;
-  padding: 8px 14px;
+  padding: 6px 10px;
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 13px;
   color: var(--btn-text);
@@ -96,19 +96,20 @@
   cursor: pointer;
   user-select: none;
   color: var(--expander-color);
-  margin-right: 6px;
+  margin-right: 4px;
   display: inline-block;
-  width: 12px;
+  width: 10px;
   position: relative;
   z-index: 1;
   transition: color 0.2s ease;
-  font-size: 11px;
+  font-size: 10px;
+  vertical-align: baseline;
 }
 
 .json-expander-placeholder {
   display: inline-block;
-  width: 12px;
-  margin-right: 6px;
+  width: 10px;
+  margin-right: 4px;
   visibility: hidden;
 }
 

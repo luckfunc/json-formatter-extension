@@ -34,7 +34,7 @@ function renderValue(node: JsonNode, isLast: boolean): HTMLElement {
           });
         }
         valueContainer.appendChild(childrenContainer);
-        valueContainer.appendChild(createElement('div', 'json-line', closeSyntax));
+        valueContainer.appendChild(createClosingLine(closeSyntax));
       }
       break;
     }
@@ -73,6 +73,15 @@ function renderValue(node: JsonNode, isLast: boolean): HTMLElement {
   }
 
   return valueContainer;
+}
+
+function createClosingLine(closeSyntax: string): HTMLElement {
+  const line = createElement('div', 'json-line');
+  const placeholder = createElement('span', 'json-expander-placeholder');
+  placeholder.setAttribute('aria-hidden', 'true');
+  line.appendChild(placeholder);
+  line.appendChild(createElement('span', 'json-syntax', closeSyntax));
+  return line;
 }
 
 export function renderNode(node: JsonNode, isLast = false): HTMLElement {
