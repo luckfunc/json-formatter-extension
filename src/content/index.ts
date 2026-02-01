@@ -2,7 +2,7 @@ import type { FormatterState } from './model';
 import { toggleNodeExpansion } from './events';
 import { getPreContentAndRemove, isJsonPage } from './page';
 import { parseToNodes } from './parser';
-import { renderNode } from './render';
+import { renderTree } from './render';
 import { loadCSS } from './theme';
 import { createUI } from './ui';
 
@@ -19,7 +19,7 @@ function rerender(): void {
   }
 
   container.innerHTML = '';
-  const newDom = renderNode(state.rootNode, true);
+  const newDom = renderTree(state.rootNode, { showLineNumbers: true });
   container.appendChild(newDom);
 }
 
