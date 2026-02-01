@@ -105,3 +105,6 @@ public
 
 # JetBrains IDEs
 .idea/
+
+# Create Biome
+.biomeignore

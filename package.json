@@ -19,31 +19,17 @@
     "build": "vite build",
     "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
     "dev": "vite build --watch",
-    "lint": "eslint . && stylelint --allow-empty-input \"**/*.{css,less,scss}\"",
-    "lint:fix": "prettier --write . && eslint --fix . && stylelint --allow-empty-input --fix \"**/*.{css,less,scss}\"",
+    "lint": "biome check .",
+    "lint:fix": "biome format --write . && biome check --write .",
     "prepare": "husky",
     "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "lint-staged": {
-    "*.{cjs,cts,js,jsx,mjs,mts,ts,tsx,vue}": "eslint --fix",
-    "*.{css,less,scss}": "stylelint --fix",
-    "*.{cjs,css,cts,html,js,json,jsx,less,md,mjs,mts,scss,ts,tsx,vue,yaml,yml}": "prettier --write"
-  },
-  "prettier": "prettier-config-ali",
-  "stylelint": {
-    "extends": [
-      "stylelint-config-ali",
-      "stylelint-prettier/recommended"
-    ]
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:ci": "biome check ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.13",
     "@types/chrome": "^0.1.6",
     "@types/node": "^24.3.1",
-    "eslint": "^9.35.0",
-    "eslint-config-ali": "^16.5.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "less": "^4.4.1",
     "lint-staged": "^16.1.6",
