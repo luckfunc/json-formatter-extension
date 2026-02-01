@@ -83,9 +83,17 @@ export function renderNode(node: JsonNode, isLast = false): HTMLElement {
 
   if (isContainer) {
     line.classList.add(`json-${node.type}`);
-    const expander = createElement('span', 'json-expander', node.expanded ? '▼' : '▶');
-    line.appendChild(expander);
   }
+
+  const expander = createElement(
+    'span',
+    isContainer ? 'json-expander' : 'json-expander-placeholder',
+    isContainer ? (node.expanded ? '▼' : '▶') : ''
+  );
+  if (!isContainer) {
+    expander.setAttribute('aria-hidden', 'true');
+  }
+  line.appendChild(expander);
 
   if (typeof node.key === 'string') {
     const keySpan = createElement('span', 'json-key', `"${node.key}"`);
