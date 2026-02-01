@@ -1,6 +1,8 @@
 # JSON Formatter Extension
 
-[中文说明 → README.zh-CN.md](README.zh-CN.md)
+[Report Bug](https://github.com/luckfunc/json-formatter-extension/issues) · [Request Feature](https://github.com/luckfunc/json-formatter-extension/issues/new) · English · [中文](README.zh-CN.md)
+
+![Preview](public/preview.png)
 
 A browser JSON formatter extension.
 
