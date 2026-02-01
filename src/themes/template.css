@@ -4,63 +4,63 @@
   z-index: 10;
   top: 8px;
   right: 10px;
-  background: var(--bg-secondary);
-  box-shadow: var(--shadow);
-  padding: 5px;
-  border: 1px solid var(--border-primary);
-  border-radius: 2px;
+  background: var(--btn-bar-bg, transparent);
+  box-shadow: none;
+  padding: 4px;
+  border: 1px solid var(--btn-bar-border, var(--border-primary));
+  border-radius: 3px;
 }
 
 #optionBar button {
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  box-shadow: none;
   user-select: none;
   background: var(--btn-bg);
   border: 1px solid var(--btn-border);
   color: var(--btn-text);
-  font-size: 13px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-bottom: 0;
-  min-width: 4em;
-  padding: 3px 0;
+  min-width: 58px;
+  padding: 4px 6px;
   position: relative;
   z-index: 10;
-  display: inline-block;
-  width: 80px;
-  text-shadow: 1px 1px rgba(255, 255, 255, 0.3);
-  font-family: var(--font-ui);
-  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, var(--font-ui));
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 #optionBar button:hover {
   background: var(--btn-hover-bg);
-  border-color: var(--border-secondary);
+  border-color: var(--btn-hover-border, var(--border-secondary));
 }
 
 #optionBar button:active {
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
   background: var(--btn-active-bg, var(--btn-hover-bg));
   color: var(--btn-active-text, var(--btn-text));
+  border-color: var(--btn-active-border, var(--btn-hover-border, var(--border-secondary)));
 }
 
 #optionBar button.selected {
   background: var(--btn-selected-bg);
   color: var(--btn-selected-text);
   border-color: var(--btn-selected-border, var(--btn-border));
-  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 #btnFormatted {
   margin-left: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-right: none;
 }
 
 #btnRaw {
   margin-right: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  margin-left: -1px;
 }
 
 #jsonFormatterParsed {
@@ -79,21 +79,6 @@
   --fold-width: 12px;
   --indent-size: 16px;
   --gutter-text: var(--text-secondary, #888);
-}
-
-#jsonFormatterRaw {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-#jsonFormatterRaw pre {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
-  font-size: 13px;
-  line-height: 1.5;
-  padding: 36px 10px 5px;
-  margin: 0;
-  white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .json-row {

@@ -1,12 +1,14 @@
 import type { FormatterState } from './model';
 import { toggleNodeExpansion } from './events';
-import { getPreContentAndRemove, isJsonPage } from './page';
+import { getPreElement, isJsonPage } from './page';
 import { parseToNodes } from './parser';
 import { renderTree } from './render';
 import { loadCSS } from './theme';
 import { createUI } from './ui';
 
 let state: FormatterState | null = null;
+let rawPreElement: HTMLPreElement | null = null;
+let rawPreDisplay = '';
 
 function rerender(): void {
   if (!state) {
@@ -55,15 +57,14 @@ function switchToFormatted(): void {
   state.viewMode = 'formatted';
 
   const formattedContainer = document.getElementById('jsonFormatterParsed');
-  const rawContainer = document.getElementById('jsonFormatterRaw');
   const formattedBtn = document.getElementById('btnFormatted');
   const rawBtn = document.getElementById('btnRaw');
 
   if (formattedContainer) {
     formattedContainer.style.display = 'block';
   }
-  if (rawContainer) {
-    rawContainer.style.display = 'none';
+  if (rawPreElement) {
+    rawPreElement.style.display = 'none';
   }
   if (formattedBtn) {
     formattedBtn.classList.add('selected');
@@ -81,15 +82,14 @@ function switchToRaw(): void {
   state.viewMode = 'raw';
 
   const formattedContainer = document.getElementById('jsonFormatterParsed');
-  const rawContainer = document.getElementById('jsonFormatterRaw');
   const formattedBtn = document.getElementById('btnFormatted');
   const rawBtn = document.getElementById('btnRaw');
 
   if (formattedContainer) {
     formattedContainer.style.display = 'none';
   }
-  if (rawContainer) {
-    rawContainer.style.display = 'block';
+  if (rawPreElement) {
+    rawPreElement.style.display = rawPreDisplay;
   }
   if (formattedBtn) {
     formattedBtn.classList.remove('selected');
@@ -110,11 +110,13 @@ async function initJsonFormatter(): Promise<void> {
     chromeContainer.remove();
   }
 
-  const rawContent = getPreContentAndRemove();
-  if (!rawContent) {
+  const preElement = getPreElement();
+  if (!preElement) {
     console.log('No content found');
     return;
   }
+
+  const rawContent = preElement.textContent ?? '';
 
   if (rawContent.length > 3000000) {
     console.log('JSON too large to format');
@@ -137,8 +139,12 @@ async function initJsonFormatter(): Promise<void> {
     rawContent,
   };
 
+  rawPreElement = preElement;
+  rawPreDisplay = preElement.style.display;
+  preElement.style.display = 'none';
+
   await loadCSS();
-  createUI(rawContent, { onFormatted: switchToFormatted, onRaw: switchToRaw });
+  createUI({ onFormatted: switchToFormatted, onRaw: switchToRaw });
   rerender();
   document.addEventListener('click', handleExpanderClick);
   chrome.storage.onChanged.addListener((changes, areaName) => {

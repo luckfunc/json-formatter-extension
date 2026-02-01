@@ -1,12 +1,9 @@
-export function getPreContentAndRemove(): string | null {
-  const preElement = document.querySelector('body > pre') as HTMLPreElement;
+export function getPreElement(): HTMLPreElement | null {
+  const preElement = document.querySelector('body > pre') as HTMLPreElement | null;
   if (!preElement) {
     return null;
   }
-
-  const content = preElement.textContent;
-  preElement.remove();
-  return content;
+  return preElement;
 }
 
 export function isJsonPage(): boolean {

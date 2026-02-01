@@ -5,7 +5,7 @@ interface UIHandlers {
   onRaw: () => void;
 }
 
-export function createUI(rawContent: string, handlers: UIHandlers): void {
+export function createUI(handlers: UIHandlers): void {
   const optionBar = createElement('div');
   optionBar.id = 'optionBar';
 
@@ -23,14 +23,6 @@ export function createUI(rawContent: string, handlers: UIHandlers): void {
   const formattedContainer = createElement('div');
   formattedContainer.id = 'jsonFormatterParsed';
 
-  const rawContainer = createElement('div');
-  rawContainer.id = 'jsonFormatterRaw';
-  rawContainer.style.display = 'none';
-
-  const rawPre = createElement('pre', '', rawContent);
-  rawContainer.appendChild(rawPre);
-
   document.body.appendChild(optionBar);
   document.body.appendChild(formattedContainer);
-  document.body.appendChild(rawContainer);
 }
