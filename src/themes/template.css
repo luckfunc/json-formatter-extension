@@ -145,12 +145,12 @@
   height: 5px;
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
+  transform: translateY(0.5px) rotate(45deg);
   transform-origin: center;
 }
 
 .json-expander[data-expanded='false']::before {
-  transform: rotate(-45deg);
+  transform: translateY(0.5px) rotate(-45deg);
 }
 
 .json-expander-placeholder {
