@@ -24,5 +24,5 @@ Build output is in `dist/`. Load it in Chrome via "Load unpacked".
 
 ## Thanks
 
-This project borrows interaction ideas from Monaco Editor. Thanks for the open-source work:  
+This project borrows interaction ideas from Monaco Editor. Thanks for the open-source work:
 https://github.com/microsoft/monaco-editor

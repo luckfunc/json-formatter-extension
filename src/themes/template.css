@@ -1,3 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
 #optionBar {
   user-select: none;
   position: absolute;
@@ -30,7 +42,10 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono, var(--font-ui));
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 #optionBar button:hover {
@@ -64,7 +79,16 @@
 }
 
 #jsonFormatterParsed {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace);
+  font-family: var(
+    --font-mono,
+    ui-monospace,
+    SFMono-Regular,
+    'SF Mono',
+    Consolas,
+    'Liberation Mono',
+    Menlo,
+    monospace
+  );
   font-size: 13px;
   line-height: var(--line-height, 1.5);
   padding: 6px 16px 16px 0;
@@ -73,6 +97,8 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: auto;
+  min-height: 100vh;
+  box-sizing: border-box;
   --line-height: 1.5;
   --gutter-width: 52px;
   --line-number-width: 32px;
