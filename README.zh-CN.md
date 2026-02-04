@@ -26,3 +26,7 @@ pnpm run build
 
 本项目在设计与交互上借鉴了 Monaco Editor 的一些思路，感谢其开源实现：
 https://github.com/microsoft/monaco-editor
+
+主题配色参考：
+https://zed.dev/themes/ayu
+https://github.com/antfu/vscode-theme-vitesse
