@@ -17,7 +17,6 @@
   "main": "index.js",
   "scripts": {
     "build": "vite build",
-    "ci:eslint": "eslint -f json src -o ./.ci/eslint.json",
     "dev": "vite build --watch",
     "lint": "biome check .",
     "lint:fix": "biome format --write . && biome check --write .",
