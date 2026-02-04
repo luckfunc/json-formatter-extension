@@ -28,5 +28,5 @@ This project borrows interaction ideas from Monaco Editor. Thanks for the open-s
 https://github.com/microsoft/monaco-editor
 
 Theme colors are based on:
-https://github.com/k4yt3x/zed-theme-ayu-darker
-https://github.com/antfu/vscode-theme-vitesse
+- https://github.com/k4yt3x/zed-theme-ayu-darker
+- https://github.com/antfu/vscode-theme-vitesse

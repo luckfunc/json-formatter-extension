@@ -28,5 +28,5 @@ pnpm run build
 https://github.com/microsoft/monaco-editor
 
 主题配色参考：
-https://zed.dev/themes/ayu
-https://github.com/antfu/vscode-theme-vitesse
+- https://github.com/k4yt3x/zed-theme-ayu-darker
+- https://github.com/antfu/vscode-theme-vitesse
