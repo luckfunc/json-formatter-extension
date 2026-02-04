@@ -4,47 +4,47 @@ body {
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
+  margin: 0;
   background: var(--bg-primary);
   color: var(--text-primary);
 }
 
 #optionBar {
-  user-select: none;
+  display: inline-flex;
   position: absolute;
-  z-index: 10;
   top: 8px;
   right: 10px;
-  background: var(--btn-bar-bg, transparent);
-  box-shadow: none;
-  padding: 0;
-  display: inline-flex;
+  z-index: 10;
   align-items: center;
   gap: 4px;
+  padding: 0;
+  user-select: none;
+  background: var(--btn-bar-bg, transparent);
+  box-shadow: none;
   border: none;
   border-radius: 0;
 }
 
 #optionBar button {
-  border-radius: 3px;
-  box-shadow: none;
+  display: inline-flex;
+  position: relative;
+  z-index: 10;
+  min-width: 58px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 6px;
+  margin-bottom: 0;
   user-select: none;
   background: var(--btn-bg);
   border: 1px solid var(--btn-border);
+  border-radius: 3px;
+  box-shadow: none;
   color: var(--btn-text);
+  font-family: var(--font-mono, var(--font-ui));
   font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 0;
-  min-width: 58px;
-  padding: 4px 6px;
-  position: relative;
-  z-index: 10;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono, var(--font-ui));
   transition:
     background 0.15s ease,
     color 0.15s ease,
@@ -78,6 +78,14 @@ body {
 }
 
 #jsonFormatterParsed {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 6px 16px 16px 0;
+  overflow-x: auto;
+  white-space: normal;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(
     --font-mono,
     ui-monospace,
@@ -90,14 +98,6 @@ body {
   );
   font-size: 13px;
   line-height: var(--line-height, 1.5);
-  padding: 6px 16px 16px 0;
-  white-space: normal;
-  position: relative;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  overflow-x: auto;
-  min-height: 100vh;
-  box-sizing: border-box;
   --line-height: 1.5;
   --gutter-width: 52px;
   --line-number-width: 32px;
@@ -114,17 +114,17 @@ body {
 }
 
 .json-gutter {
-  flex: 0 0 var(--gutter-width);
-  width: var(--gutter-width);
   display: flex;
+  width: var(--gutter-width);
+  height: calc(1em * var(--line-height, 1.5));
+  flex: 0 0 var(--gutter-width);
   align-items: center;
   justify-content: flex-end;
   gap: 6px;
-  color: var(--gutter-text);
-  user-select: none;
   padding-right: 6px;
   box-sizing: border-box;
-  height: calc(1em * var(--line-height, 1.5));
+  color: var(--gutter-text);
+  user-select: none;
 }
 
 .json-line-number {
@@ -139,10 +139,10 @@ body {
 }
 
 .json-content {
-  flex: 1;
-  white-space: pre;
   position: relative;
+  flex: 1;
   padding-left: calc(var(--indent-level, 0) * var(--indent-size));
+  white-space: pre;
   background-image: repeating-linear-gradient(
     to right,
     var(--structure-line) 0,
@@ -155,15 +155,15 @@ body {
 }
 
 .json-expander {
+  display: inline-flex;
+  position: relative;
+  width: var(--fold-width);
+  height: var(--fold-width);
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   user-select: none;
   color: var(--expander-color);
-  width: var(--fold-width);
-  height: var(--fold-width);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   opacity: 0;
   font-size: 0;
   line-height: 0;
@@ -173,10 +173,10 @@ body {
 }
 
 .json-expander::before {
-  content: '';
   display: block;
   width: 5px;
   height: 5px;
+  content: '';
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
   transform: translateY(0.5px) rotate(45deg);
@@ -237,17 +237,4 @@ body {
 .json-syntax {
   color: var(--json-syntax);
   font-weight: 400;
-}
-
-.json-comma {
-  color: var(--json-syntax);
-}
-
-.json-comment {
-  color: var(--json-comment);
-  font-style: italic;
-}
-
-.json-primitive {
-  display: inline;
 }
