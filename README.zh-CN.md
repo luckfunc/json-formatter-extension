@@ -11,7 +11,7 @@
 - JSON 结构化展示（可折叠）
 - 主题切换（Options / Popup）
 - 原始 Raw 模式：回到浏览器默认展示
-- 支持多套主题（Classic / VSCode / GitHub / Claude / Google）
+- 支持多套主题（Classic / VSCode / GitHub / Claude / Google / Ayu（Zed） / Vitesse）
 
 ## 开发
 

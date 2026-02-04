@@ -1,5 +1,5 @@
 export type ThemeMode = 'auto' | 'light' | 'dark';
-export type ThemeStyle = 'classic' | 'vscode' | 'github' | 'claude' | 'google';
+export type ThemeStyle = 'classic' | 'vscode' | 'github' | 'claude' | 'google' | 'ayu' | 'vitesse';
 
 export interface ThemeSettings {
   themeMode?: ThemeMode;
@@ -20,7 +20,7 @@ const isValidThemeMode = (value: any): value is ThemeMode => {
 };
 
 const isValidThemeStyle = (value: any): value is ThemeStyle => {
-  return ['classic', 'vscode', 'github', 'claude', 'google'].includes(value);
+  return ['classic', 'vscode', 'github', 'claude', 'google', 'ayu', 'vitesse'].includes(value);
 };
 
 export function initThemeSettings(controls: ThemeControls): void {

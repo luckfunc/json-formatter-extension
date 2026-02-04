@@ -1,0 +1,36 @@
+/* themes/vitesse/dark-variables.css */
+
+:root {
+  --font-mono: 'Fira Code', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+  --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
+  --border-primary: #191919;
+  --border-secondary: #2f363d;
+  --text-primary: #dbd7ca;
+  --text-secondary: #959da5;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+
+  --btn-bg: #121212;
+  --btn-border: #2f363d;
+  --btn-text: #dbd7ca;
+  --btn-hover-bg: #181818;
+  --btn-selected-bg: #4d9375;
+  --btn-selected-text: #121212;
+  --btn-selected-border: #4d9375;
+
+  --json-key: #b8a965;
+  --json-string: #c98a7d;
+  --json-number: #4c9a91;
+  --json-boolean: #4d9375;
+  --json-null: #cb7676;
+  --json-syntax: #666666;
+  --json-comment: #758575;
+
+  --structure-line: #2f363d;
+  --expander-color: #959da5;
+  --expander-hover: #dbd7ca;
+}

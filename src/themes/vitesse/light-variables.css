@@ -1,0 +1,36 @@
+/* themes/vitesse/light-variables.css */
+
+:root {
+  --font-mono: 'Fira Code', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+  --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f7;
+  --border-primary: #f0f0f0;
+  --border-secondary: #e1e4e8;
+  --text-primary: #393a34;
+  --text-secondary: #6a737d;
+  --shadow: 0 6px 20px rgba(57, 58, 52, 0.12);
+
+  --btn-bg: #ffffff;
+  --btn-border: #f0f0f0;
+  --btn-text: #393a34;
+  --btn-hover-bg: #f7f7f7;
+  --btn-selected-bg: #1c6b48;
+  --btn-selected-text: #ffffff;
+  --btn-selected-border: #1c6b48;
+
+  --json-key: #998418;
+  --json-string: #b56959;
+  --json-number: #2f798a;
+  --json-boolean: #1e754f;
+  --json-null: #ab5959;
+  --json-syntax: #999999;
+  --json-comment: #a0ada0;
+
+  --structure-line: #e1e4e8;
+  --expander-color: #6a737d;
+  --expander-hover: #393a34;
+}

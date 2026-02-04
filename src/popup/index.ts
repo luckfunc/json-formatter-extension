@@ -1,4 +1,4 @@
-import { initThemeSettings } from '../options/themeSettings';
+import { initThemeSettings } from '../options/theme-settings';
 
 const radioButtons = [...document.querySelectorAll('input[name="theme"]')] as HTMLInputElement[];
 const themeSelect = document.getElementById('theme-select') as HTMLSelectElement;

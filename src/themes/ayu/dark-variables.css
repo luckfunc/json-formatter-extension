@@ -1,0 +1,36 @@
+/* themes/ayu/dark-variables.css */
+
+:root {
+  --font-mono: 'Fira Code', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+  --font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --bg-primary: #0a0e14;
+  --bg-secondary: #11151c;
+  --border-primary: #1f2430;
+  --border-secondary: #2a303e;
+  --text-primary: #b3b1ad;
+  --text-secondary: #707a8c;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+
+  --btn-bg: #11151c;
+  --btn-border: #1f2430;
+  --btn-text: #b3b1ad;
+  --btn-hover-bg: #1f2430;
+  --btn-selected-bg: #e6b450;
+  --btn-selected-text: #0a0e14;
+  --btn-selected-border: #ffcc66;
+
+  --json-key: #39bae6;
+  --json-string: #aad94c;
+  --json-number: #ffb454;
+  --json-boolean: #f07178;
+  --json-null: #d2a6ff;
+  --json-syntax: #b3b1ad;
+  --json-comment: #5c6773;
+
+  --structure-line: #1f2430;
+  --expander-color: #707a8c;
+  --expander-hover: #b3b1ad;
+}

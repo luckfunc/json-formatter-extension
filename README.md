@@ -11,7 +11,7 @@ A browser JSON formatter extension.
 - Structured JSON view (collapsible)
 - Theme switching (Options / Popup)
 - Raw mode uses the browser's default rendering
-- Multiple themes (Classic / VSCode / GitHub / Claude / Google)
+- Multiple themes (Classic / VSCode / GitHub / Claude / Google / Ayu (Zed) / Vitesse)
 
 ## Development
 
