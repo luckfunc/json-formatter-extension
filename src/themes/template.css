@@ -18,9 +18,12 @@ body {
   right: 10px;
   background: var(--btn-bar-bg, transparent);
   box-shadow: none;
-  padding: 4px;
-  border: 1px solid var(--btn-bar-border, var(--border-primary));
-  border-radius: 3px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  border-radius: 0;
 }
 
 #optionBar button {
@@ -67,15 +70,11 @@ body {
 
 #btnFormatted {
   margin-left: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 #btnRaw {
   margin-right: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-left: -1px;
+  margin-left: 0;
 }
 
 #jsonFormatterParsed {
