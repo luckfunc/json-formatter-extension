@@ -2,9 +2,13 @@
 
 [Report Bug](https://github.com/luckfunc/json-formatter-extension/issues) · [Request Feature](https://github.com/luckfunc/json-formatter-extension/issues/new) · [English](README.md) · 中文
 
-![预览](public/preview.png)
+![预览](store-assets/chrome-web-store/vitesse-light-clear-01-formatted-1280x800.jpg)
 
 一个用于浏览器的 JSON 格式化插件
+
+## Chrome Web Store
+
+https://chromewebstore.google.com/detail/json-formatter/ofadnldamdmdmcldhoeadgehhfjgdbla
 
 ## 功能
 

@@ -1,6 +1,6 @@
 {
   "name": "JSON Formatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "description": "Format and explore JSON responses with a customizable theme.",
   "minimum_chrome_version": "88",
